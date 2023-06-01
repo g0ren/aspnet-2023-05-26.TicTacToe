@@ -23,6 +23,10 @@ public class HomeController : Controller
         return View(new TicTacToeModel());
     }
 
+    public IActionResult GameOver()
+    {
+        return View();
+    }
     public IActionResult Privacy()
     {
         return View();
