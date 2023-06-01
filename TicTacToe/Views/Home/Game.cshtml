@@ -1,0 +1,28 @@
+﻿@model TicTacToeModel
+@{
+    ViewData["Title"] = "Tic Tac Toe";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Tic Tac Toe</h1>
+</div>
+
+<div class="container">
+    <table class="field">
+        <tr>
+            <td class="cell"><code>@Model.Field[0]</code></td>
+            <td class="cell"><code>@Model.Field[1]</code></td>
+            <td class="cell"><code>@Model.Field[2]</code></td>
+        </tr>
+        <tr>
+            <td class="cell"><code>@Model.Field[3]</code></td>
+            <td class="cell"><code>@Model.Field[4]</code></td>
+            <td class="cell"><code>@Model.Field[5]</code></td>
+        </tr>
+        <tr>
+            <td class="cell"><code>@Model.Field[6]</code></td>
+            <td class="cell"><code>@Model.Field[7]</code></td>
+            <td class="cell"><code>@Model.Field[8]</code></td>
+        </tr>
+    </table>
+</div>
