@@ -29,3 +29,11 @@ C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\obj\Debug\net7.0\refint\
 C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\obj\Debug\net7.0\TicTacToe.pdb
 C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\obj\Debug\net7.0\TicTacToe.genruntimeconfig.cache
 C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\obj\Debug\net7.0\ref\TicTacToe.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\System.Web.Mvc.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\System.Web.Razor.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\System.Web.Helpers.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\System.Web.WebPages.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll
+C:\Users\aelita\RiderProjects\WebApplication1\TicTacToe\obj\Debug\net7.0\TicTacToe.csproj.CopyComplete

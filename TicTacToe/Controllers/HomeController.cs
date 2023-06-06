@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using TicTacToe.Models;
 
 namespace TicTacToe.Controllers;
@@ -18,11 +19,23 @@ public class HomeController : Controller
         return View();
     }
     
-    public IActionResult Game()
+    [HttpPost]
+    public IActionResult Game([FromForm(Name = "name")] string name, [FromForm(Name = "encode")] int? encode)
     {
-        return View(new TicTacToeModel());
+        if (encode != null)
+        {
+            return View(new TicTacToeModel(name, (int)encode) { Name = name });
+        }
+        return View(new TicTacToeModel(name));
     }
 
+    [HttpPost]
+    public IActionResult GameMove([FromForm(Name = "name")] string name, 
+        [FromForm(Name = "encode")] int encode, [FromForm(Name = "cell")] int cell)
+    {
+        return View("Game", new TicTacToeModel(name, encode+ (int)Math.Pow(3,cell)));
+    }
+    
     public IActionResult GameOver()
     {
         return View();

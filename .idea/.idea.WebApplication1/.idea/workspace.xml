@@ -7,18 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bfc7959-2ac8-4ef8-af38-81af98d0a2e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/GameOver.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebApplication1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/Game.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Game.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/ref/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/ref/TicTacToe.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/refint/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/refint/TicTacToe.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +87,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685556656710</updated>
-      <workItem from="1685556656712" duration="4523000" />
+      <workItem from="1685556656712" duration="5551000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1685610543561</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685610543561</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,5 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>

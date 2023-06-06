@@ -38,3 +38,9 @@ body {
   text-align: center;
   font-size: x-large;
 }
+
+.cell-button{
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}

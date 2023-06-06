@@ -4,28 +4,38 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Tic Tac Toe</h1>
+    <h1 class="display-4">Welcome to Tic Tac Toe, <code>@Model.Name</code></h1>
 </div>
 
 <div class="container">
     <table class="field">
         <tr>
-            <td class="cell"><code>@Model.Field[0]</code></td>
-            <td class="cell"><code>@Model.Field[1]</code></td>
-            <td class="cell"><code>@Model.Field[2]</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[0])</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[1])</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[2])</code></td>
         </tr>
         <tr>
-            <td class="cell"><code>@Model.Field[3]</code></td>
-            <td class="cell"><code>@Model.Field[4]</code></td>
-            <td class="cell"><code>@Model.Field[5]</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[3])</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[4])</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[5])</code></td>
         </tr>
         <tr>
-            <td class="cell"><code>@Model.Field[6]</code></td>
-            <td class="cell"><code>@Model.Field[7]</code></td>
-            <td class="cell"><code>@Model.Field[8]</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[6])</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[7])</code></td>
+            <td class="cell"><code>@Html.Raw(Model.Field[8])</code></td>
         </tr>
     </table>
 </div>
 
-<button type="button" onclick="window.location.reload()">Перезагрузить страницу</button>
-<button type ="button" onclick="location.href='@Url.Action("GameOver","Home")'">Завершить игру</button>
+<form method="post" asp-area="" asp-controller="Home" asp-action="Game">
+    
+</form>
+
+<form method="post" asp-area="" asp-controller="Home" asp-action="Game">
+    <input type="hidden" id="name" name="name" value="@Model.Name"/>
+    <button type="submit">Перезагрузить страницу</button>
+</form>
+
+<form method="post" asp-area="" asp-controller="Home" asp-action="GameOver">
+    <button type="submit">Завершить игру</button>
+</form>

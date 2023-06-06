@@ -8,4 +8,8 @@
     <h1 class="display-4">Welcome to Tic Tac Toe</h1>
 </div>
 
-<button type ="button" onclick="location.href='@Url.Action("Game","Home")'">Начать игру</button>
+<form method="post" asp-area="" asp-controller="Home" asp-action="Game">
+    <label for="name">Введите имя</label>
+    <input type="text" id="name" name="name">
+    <button type="submit">Начать игру</button>
+</form>
