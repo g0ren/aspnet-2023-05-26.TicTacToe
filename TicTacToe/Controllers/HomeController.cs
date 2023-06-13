@@ -20,20 +20,29 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult Game([FromForm(Name = "name")] string name, [FromForm(Name = "encode")] int? encode)
+    public IActionResult Game([FromForm(Name = "nameX")] string nameX, 
+        [FromForm(Name = "nameO")] string nameO,
+        [FromForm(Name = "whoseMove")] int whoseMove,
+        [FromForm(Name = "encode")] int? encode)
     {
-        if (encode != null)
-        {
-            return View(new TicTacToeModel(name, (int)encode) { Name = name });
-        }
-        return View(new TicTacToeModel(name));
+        return View(encode != null ? 
+            new TicTacToeModel(nameX, nameO, whoseMove, (int)encode) : 
+            new TicTacToeModel(nameX, nameO));
     }
 
     [HttpPost]
-    public IActionResult GameMove([FromForm(Name = "name")] string name, 
-        [FromForm(Name = "encode")] int encode, [FromForm(Name = "cell")] int cell)
+    public IActionResult GameMove([FromForm(Name = "nameX")] string nameX,
+        [FromForm(Name = "nameO")] string nameO,
+        [FromForm(Name = "whoseMove")] int whoseMove,
+        [FromForm(Name = "encode")] int encode,
+        [FromForm(Name = "cell")] int cell)
     {
-        return View("Game", new TicTacToeModel(name, encode+ (int)Math.Pow(3,cell)));
+        ModelState.Clear();
+        return View("Game", 
+            new TicTacToeModel(nameX, 
+                nameO, 
+                whoseMove,
+                encode + ((int)Math.Pow(3, cell)) * whoseMove));
     }
     
     public IActionResult GameOver()

@@ -4,8 +4,11 @@ namespace TicTacToe.Models;
 
 public class TicTacToeModel
 {
-    public string Name { get; set; }
+    public string NameX { get; set; }
+    public string NameO { get; set; }
     public List<string> Field { get; private set; }
+    
+    public int WhoseMove { get; set; }
 
     enum Symbols
     {
@@ -14,16 +17,6 @@ public class TicTacToeModel
         O
     }
 
-    string ButtonCode(int cellNo)
-    {
-        return "<form method=\"post\" action=\"/Home/GameMove\">" +
-               $"<input type=\"hidden\" id=\"encode\" name=\"encode\" value=\"{Serialize()}\"/>" +
-               $"<input type=\"hidden\" id=\"cell\" name=\"cell\" value=\"{cellNo}\"/>" +
-               $"<input type=\"hidden\" id=\"name\" name=\"name\" value=\"{Name}\"/>" +
-               "<button class=\"cell-button\" type=\"submit\"> ? </button>" +
-               "</form>";
-    }
-    
     string Symbol(int code, int cell)
     {
         switch (code)
@@ -81,34 +74,25 @@ public class TicTacToeModel
         }
     }
 
-    void PutButtons()
+    public TicTacToeModel(string nameX, string nameO)
     {
-        for (int i = 0; i < 9; i++)
-        {
-            if (Field[i] == " ")
-            {
-                Field[i] = ButtonCode(i);
-            }
-        }
-    }
-    
-    public TicTacToeModel(string name)
-    {
-        Name = name;
+        NameX = nameX;
+        NameO = nameO;
+        WhoseMove = 1;
         Random random = new Random();
         MakeField();
         for(int i = 0; i < 9; i++)
         {
             Field[i] = Symbol(random.Next((3)), i);
         }
-        PutButtons();
     }
 
-    public TicTacToeModel(string name, int encode)
+    public TicTacToeModel(string nameX, string nameO, int whoseMove, int encode)
     {
-        Name = name;
+        NameX = nameX;
+        NameO = nameO;
+        WhoseMove = whoseMove == 1 ? 2 : 1;
         MakeField();
         Deserialize(encode);
-        PutButtons();
     }
 }

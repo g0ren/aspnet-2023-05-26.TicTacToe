@@ -1,4 +1,5 @@
-﻿@model Index
+﻿@using TicTacToe.HtmlHelpers
+@model Index
 
 @{
     ViewData["Title"] = "Tic Tac Toe";
@@ -8,8 +9,13 @@
     <h1 class="display-4">Welcome to Tic Tac Toe</h1>
 </div>
 
-<form method="post" asp-area="" asp-controller="Home" asp-action="Game">
-    <label for="name">Введите имя</label>
-    <input type="text" id="name" name="name">
-    <button type="submit">Начать игру</button>
-</form>
+@using (Html.BeginForm("Game", "Home", FormMethod.Post))
+{
+    @Html.Label("Введите имя игрока X")
+    @Html.TextBox("nameX")
+    @Html.Break()
+    @Html.Label("Введите имя игрока 0")
+    @Html.TextBox("nameO")
+    @Html.Break()
+    @Html.SubmitButton("Начать игру");
+}
