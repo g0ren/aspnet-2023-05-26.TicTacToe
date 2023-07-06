@@ -18,35 +18,64 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    public IActionResult AddX([FromForm(Name = "nameX")] string? nameX)
+    {
+        if (!GameState.ConnectedX)
+        {
+            GameState.NameX = nameX;
+            GameState.ConnectedX = true;
+        }
+        HttpContext.Session.SetInt32("MyPlayer", 1);
+        return View("Game", new TicTacToeModel());
+    }
     
     [HttpPost]
-    public IActionResult Game([FromForm(Name = "nameX")] string nameX, 
-        [FromForm(Name = "nameO")] string nameO,
-        [FromForm(Name = "whoseMove")] int whoseMove,
-        [FromForm(Name = "encode")] int? encode)
+    public IActionResult AddO([FromForm(Name = "nameO")] string? nameO)
     {
-        return View(encode != null ? 
-            new TicTacToeModel(nameX, nameO, whoseMove, (int)encode) : 
-            new TicTacToeModel(nameX, nameO));
+        if (!GameState.ConnectedO)
+        {
+            GameState.NameO = nameO;
+            GameState.ConnectedO = true;
+        }
+        GameState.NewGame();
+        HttpContext.Session.SetInt32("MyPlayer", 2);
+        return View("Game", new TicTacToeModel());
+    }
+    
+    [HttpPost]
+    public IActionResult NewGame()
+    {
+        if(GameState.ConnectedX && GameState.ConnectedO)
+        {
+            GameState.NewGame();
+        }
+        
+        return View("Game", new TicTacToeModel());
+    }
+    
+    [HttpPost]
+    public IActionResult Game()
+    {
+        return View(new TicTacToeModel());
     }
 
     [HttpPost]
-    public IActionResult GameMove([FromForm(Name = "nameX")] string nameX,
-        [FromForm(Name = "nameO")] string nameO,
-        [FromForm(Name = "whoseMove")] int whoseMove,
-        [FromForm(Name = "encode")] int encode,
+    public IActionResult GameMove(
         [FromForm(Name = "cell")] int cell)
     {
         ModelState.Clear();
+        GameState.Encoded += ((int)Math.Pow(3, cell)) * GameState.WhoseMove;
+        GameState.WhoseMove = GameState.WhoseMove == 1 ? 2 : 1;
         return View("Game", 
-            new TicTacToeModel(nameX, 
-                nameO, 
-                whoseMove,
-                encode + ((int)Math.Pow(3, cell)) * whoseMove));
+            new TicTacToeModel());
     }
     
     public IActionResult GameOver()
     {
+        GameState.ConnectedO = false;
+        GameState.ConnectedX = false;
         return View();
     }
     public IActionResult Privacy()

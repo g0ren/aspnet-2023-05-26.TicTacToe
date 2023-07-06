@@ -6,19 +6,13 @@
     <projectFile profileName="https">TicTacToe/TicTacToe.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f8cf051-735a-45cf-a417-540234a2538f" name="Changes" comment="update 2023.06.06">
-      <change afterPath="$PROJECT_DIR$/TicTacToe/HtmlHelpers/Helpers.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/Microsoft.Web.Infrastructure.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/System.Web.Helpers.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/System.Web.Mvc.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/System.Web.Razor.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/System.Web.WebPages.Deployment.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/System.Web.WebPages.Razor.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/System.Web.WebPages.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.csproj.CopyComplete" afterDir="false" />
+    <list default="true" id="2f8cf051-735a-45cf-a417-540234a2538f" name="Changes" comment="update 2023.06.13">
+      <change afterPath="$PROJECT_DIR$/TicTacToe/Models/GameState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/HtmlHelpers/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/HtmlHelpers/Helpers.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Models/TicTacToeModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Models/TicTacToeModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/Game.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Game.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.dll" afterDir="false" />
@@ -34,9 +28,6 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/aelita/RiderProjects/WebApplication1/TicTacToe/Views/Home/Game.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -48,15 +39,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.TicTacToe: http">
     <configuration name="TicTacToe: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/TicTacToe/TicTacToe.csproj" />
@@ -157,7 +148,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1685724119278</updated>
-      <workItem from="1685724221932" duration="43399000" />
+      <workItem from="1685724221932" duration="43675000" />
+      <workItem from="1686762483488" duration="1175000" />
+      <workItem from="1687621081106" duration="4494000" />
+      <workItem from="1687700269421" duration="593000" />
+      <workItem from="1688402028215" duration="599000" />
+      <workItem from="1688406689891" duration="21818000" />
     </task>
     <task id="LOCAL-00001" summary="update 2023.06.06">
       <created>1686080553032</created>
@@ -166,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686080553032</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update 2023.06.13">
+      <created>1686674573629</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686674573630</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,6 +191,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update 2023.06.06" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 2023.06.06" />
+    <MESSAGE value="update 2023.06.13" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 2023.06.13" />
   </component>
 </project>

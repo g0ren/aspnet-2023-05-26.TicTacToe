@@ -8,12 +8,15 @@ namespace TicTacToe.HtmlHelpers;
 
 public static class Helpers
 {
-    public static IHtmlContent CellButton(this IHtmlHelper helper)
+    public static IHtmlContent CellButton(this IHtmlHelper helper, bool disabled = false)
     {
-        return SubmitButton(helper, " ? ", "cell-button");
+        return SubmitButton(helper, " ? ", "cell-button", disabled);
     }
 
-    public static IHtmlContent SubmitButton(this IHtmlHelper helper, String text, String cssClass = "")
+    public static IHtmlContent SubmitButton(this IHtmlHelper helper, 
+        String text, 
+        String cssClass = "", 
+        bool disabled = false)
     {
         TagBuilder tagBuilder = new TagBuilder("button");
         if (cssClass != "")
@@ -21,6 +24,10 @@ public static class Helpers
             tagBuilder.AddCssClass(cssClass);    
         }
         tagBuilder.MergeAttribute("type","submit");
+        if (disabled)
+        {
+            tagBuilder.MergeAttribute("disabled","disabled");
+        }
 
         IHtmlContentBuilder contentBuilder = new HtmlContentBuilder();
         contentBuilder.AppendHtml(tagBuilder.ToString(TagRenderMode.StartTag));

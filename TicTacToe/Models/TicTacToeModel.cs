@@ -7,9 +7,71 @@ public class TicTacToeModel
     public string NameX { get; set; }
     public string NameO { get; set; }
     public List<string> Field { get; private set; }
-    
+
     public int WhoseMove { get; set; }
 
+    List<int> LineSums =>
+        new List<int>
+        {
+            DesymbolForSums(Field[0]) +
+            DesymbolForSums(Field[1]) +
+            DesymbolForSums(Field[2]),
+            DesymbolForSums(Field[3]) +
+            DesymbolForSums(Field[4]) +
+            DesymbolForSums(Field[5]),
+            DesymbolForSums(Field[6]) +
+            DesymbolForSums(Field[7]) +
+            DesymbolForSums(Field[8]),
+            DesymbolForSums(Field[0]) +
+            DesymbolForSums(Field[3]) +
+            DesymbolForSums(Field[6]),
+            DesymbolForSums(Field[1]) +
+            DesymbolForSums(Field[4]) +
+            DesymbolForSums(Field[7]),
+            DesymbolForSums(Field[2]) +
+            DesymbolForSums(Field[5]) +
+            DesymbolForSums(Field[8]),
+            DesymbolForSums(Field[0]) +
+            DesymbolForSums(Field[4]) +
+            DesymbolForSums(Field[8]),
+            DesymbolForSums(Field[2]) +
+            DesymbolForSums(Field[4]) +
+            DesymbolForSums(Field[6])
+        };
+
+    public int Winner
+    {
+        get
+        {
+            foreach (var sum in LineSums)
+            {
+                switch (sum)
+                {
+                    case (int)Symbols.X * 3:
+                        return (int)Symbols.X;
+                    case (int)Symbols.O * 3:
+                        return (int)Symbols.O;
+                }
+            }
+            return (int)Symbols.Empty;
+        }
+    }
+
+    public bool Draw
+    {
+        get
+        {
+            if (Winner != (int)Symbols.Empty) 
+                return false;
+            foreach (var sum in LineSums)
+            {
+                if(sum > (int)Symbols.O * 3)
+                    return false;
+            }
+            return true;
+        }
+    }
+    
     enum Symbols
     {
         Empty,
@@ -43,6 +105,19 @@ public class TicTacToeModel
         }
     }
 
+    int DesymbolForSums(string ch)
+    {
+        switch (ch)
+        {
+            case "X":
+                return (int)Symbols.X;
+            case "0":
+                return (int)Symbols.O;
+            default:
+                return 7;
+        }
+    }
+    
     public int Serialize()
     {
         int coeff = 1;
@@ -74,25 +149,11 @@ public class TicTacToeModel
         }
     }
 
-    public TicTacToeModel(string nameX, string nameO)
-    {
-        NameX = nameX;
-        NameO = nameO;
-        WhoseMove = 1;
-        Random random = new Random();
-        MakeField();
-        for(int i = 0; i < 9; i++)
-        {
-            Field[i] = Symbol(random.Next((3)), i);
-        }
-    }
 
-    public TicTacToeModel(string nameX, string nameO, int whoseMove, int encode)
+    public TicTacToeModel()
     {
-        NameX = nameX;
-        NameO = nameO;
-        WhoseMove = whoseMove == 1 ? 2 : 1;
+        WhoseMove = GameState.WhoseMove;
         MakeField();
-        Deserialize(encode);
+        Deserialize(GameState.Encoded);
     }
 }

@@ -4,225 +4,256 @@
     ViewData["Title"] = "Tic Tac Toe";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Ваш ход, 
-        <code>
-            @if (@Model.WhoseMove == 2)
-            {
-                @Model.NameO
-            }
-            else
-            {
-                @Model.NameX    
-            }
-        </code>
+@if ((Context.Session.GetInt32("MyPlayer") == 1 && !GameState.ConnectedO)
+    || (Context.Session.GetInt32("MyPlayer") == 2 && !GameState.ConnectedX))
+{
+    <div class="text-center">
+        <h1 class="display-4">
+            Ждём второго игрока, не забудь перезагрузить страницу!
         </h1>
-</div>
+    </div>
+}
+else if ((Context.Session.GetInt32("MyPlayer") == 2 && !GameState.ConnectedO)
+         || (Context.Session.GetInt32("MyPlayer") == 1 && !GameState.ConnectedX))
+{
+    <div class="text-center">
+        <h1 class="display-4">
+            Игра окончена, нажмите "Завершить игру"
+        </h1>
+    </div>
+}
+else
+{
+    <div class="text-center">
+        @if (Model.Winner == 1)
+        {
+            <h1 class="display-4">
+                <code>
+                    @GameState.NameX
+                </code>
+                is the winner!
+            </h1>
+        }
+        else if (Model.Winner == 2)
+        {
+            <h1 class="display-4">
+                <code>
+                    @GameState.NameO
+                </code>
+                is the winner!
+            </h1>
+        }
+        else if(Context.Session.GetInt32("MyPlayer") == GameState.WhoseMove)
+        {
+            <h1 class="display-4">
+                Ваш ход,
+                <code>
+                    @if (Model.WhoseMove == 2)
+                    {
+                        @GameState.NameO
+                    }
+                    else
+                    {
+                        @GameState.NameX
+                    }
+                </code>
+            </h1>
+        }
+        else
+        {
+            <h1 class="display-4">
+                Пододжди,
+                <code>
+                    @if (Model.WhoseMove == 2)
+                    {
+                        @GameState.NameX
+                    }
+                    else
+                    {
+                        @GameState.NameO
+                    }
+                </code>
+                , сейчас ход
+                <code>
+                    @if (Model.WhoseMove == 2)
+                    {
+                        @GameState.NameO
+                    }
+                    else
+                    {
+                        @GameState.NameX
+                    }
+                </code>
+                Не забудь перезагрузить страницу!
+            </h1>
+        }
+    </div>
 
-<div class="container">
-    <table class="field">
-        <tr>
-            <td class="cell">
-                <code>
-                    @if (Model.Field[0] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+    <div class="container">
+        <table class="field">
+            <tr>
+                <td class="cell">
+                    <code>
+                        @if (Model.Field[0] == " ")
                         {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 0)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
-                        }    
-                    }
-                    else
-                    {
-                        @Model.Field[0]
-                    }
-                </code>
-            </td>
-            <td class="cell">
-                <code>
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 0)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[0]
+                        }
+                    </code>
+                </td>
+                <td class="cell">
+                    <code>
+                        @if (Model.Field[1] == " ")
+                        {
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 1)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[1]
+                        }
+                    </code >
+                </td >
+                <td class="cell">
 
-                    @if (Model.Field[1] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                    <code>
+                        @if (Model.Field[2] == " ")
                         {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 1)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 2)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
                         }
-                    }
-                    else
-                    {
-                        @Model.Field[1]
-                    }
-                </code>
-            </td>
-            <td class="cell">
-                
-                <code>
+                        else
+                        {
+                            @Model.Field[2]
+                        }
+                    </code >
+                </td >
+            </tr >
+            <tr >
+                <td class="cell">
+                    <code >
+                        @if (Model.Field[3] == " ")
+                        {
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 3)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[3]
+                        }
+                    </code >
+                </td >
+                <td class="cell">
+                    <code >
+                        @if (Model.Field[4] == " ")
+                        {
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 4)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[4]
+                        }
+                    </code >
+                </td >
+                <td class="cell">
+                    <code >
+                        @if (Model.Field[5] == " ")
+                        {
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 5)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[5]
+                        }
+                    </code >
+                </td >
+            </tr >
+            <tr >
+                <td class="cell">
+                    <code >
+                        @if (Model.Field[6] == " ")
+                        {
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 6)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[6]
+                        }
+                    </code >
+                </td >
+                <td class="cell">
+                    <code >
+                        @if (Model.Field[7] == " ")
+                        {
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 7)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
+                        }
+                        else
+                        {
+                            @Model.Field[7]
+                        }
+                    </code >
+                </td >
+                <td class="cell">
 
-                    @if (Model.Field[2] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                    <code >
+                        @if (Model.Field[8] == " ")
                         {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 2)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
+                            @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                            {
+                                @Html.Hidden("cell", 8)
+                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                            }
                         }
-                    }
-                    else
-                    {
-                        @Model.Field[2]
-                    }
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <td class="cell">
-                <code>
-                    @if (Model.Field[3] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
+                        else
                         {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 3)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
+                            @Model.Field[8]
                         }
-                    }
-                    else
-                    {
-                        @Model.Field[3]
-                    }
-                </code>
-            </td>
-            <td class="cell">
-                <code>
-                    @if (Model.Field[4] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
-                        {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 4)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
-                        }
-                    }
-                    else
-                    {
-                        @Model.Field[4]
-                    }
-                </code>
-            </td>
-            <td class="cell">
-                <code>
-                    @if (Model.Field[5] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
-                        {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 5)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
-                        }
-                    }
-                    else
-                    {
-                        @Model.Field[5]
-                    }
-                </code>
-            </td>
-        </tr>
-        <tr>
-            <td class="cell">
-                <code>
-                    @if (Model.Field[6] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
-                        {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 6)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
-                        }
-                    }
-                    else
-                    {
-                        @Model.Field[6]
-                    }
-                </code>
-            </td>
-            <td class="cell">
-                <code>
-                    @if (Model.Field[7] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
-                        {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 7)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
-                        }
-                    }
-                    else
-                    {
-                        @Model.Field[7]
-                    }
-                </code>
-            </td>
-            <td class="cell">
-
-                <code>
-
-                    @if (Model.Field[8] == " ")
-                    {
-                        @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
-                        {
-                            @Html.Hidden("encode", Model.Serialize())
-                            @Html.Hidden("cell", 8)
-                            @Html.Hidden("nameX", Model.NameX)
-                            @Html.Hidden("nameO", Model.NameO)
-                            @Html.Hidden("whoseMove", Model.WhoseMove)
-                            @Html.CellButton()
-                        }
-                    }
-                    else
-                    {
-                        @Model.Field[8]
-                    }
-                </code>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<form method="post" asp-area="" asp-controller="Home" asp-action="Game">
-    
-</form>
+                    </code >
+                </td >
+            </tr >
+        </table >
+    </div>
+}
 
 @using (Html.BeginForm("Game", "Home", FormMethod.Post))
 {
-    @Html.Hidden("nameX", Model.NameX)
-    @Html.Hidden("nameO", Model.NameO)
+    @Html.SubmitButton("Перезагрузить страницу")
+}
+
+@using (Html.BeginForm("NewGame", "Home", FormMethod.Post))
+{
     @Html.SubmitButton("Новая игра")
 }
 
@@ -230,5 +261,3 @@
 {
     @Html.SubmitButton("Завершить игру")
 }
-
-
