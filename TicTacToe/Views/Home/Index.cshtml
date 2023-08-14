@@ -8,28 +8,10 @@
 <div class="text-center">
     <h1 class="display-4">Welcome to Tic Tac Toe</h1>
 </div>
-
-@if (!GameState.ConnectedX)
+@using (Html.BeginForm("ToLobby", "Home", FormMethod.Post))
 {
-    @using (Html.BeginForm("AddX", "Home", FormMethod.Post))
-    {
-        @Html.Label("Введите имя игрока X")
-        @Html.TextBox("nameX")
-        @Html.Break()
-        @Html.SubmitButton("Войти как X");
-    }
-}
-else if (!GameState.ConnectedO)
-{
-    @using (Html.BeginForm("AddO", "Home", FormMethod.Post))
-    {
-        @Html.Label("Введите имя игрока O")
-        @Html.TextBox("nameO")
-        @Html.Break()
-        @Html.SubmitButton("Войти как O");
-    }
-}
-else
-{
-    <p>Извини, братан, игра уже идёт</p>
+    @Html.Label("Введите ваше имя")
+    @Html.TextBox("name")
+    @Html.Break()
+    @Html.SubmitButton("Войти в лобби")
 }

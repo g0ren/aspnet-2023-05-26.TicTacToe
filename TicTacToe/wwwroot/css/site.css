@@ -27,8 +27,7 @@ body {
 }
 
 .field{
-  border: solid;
-  border-width: 2px;
+  border: 2px solid;
 }
 
 .cell{

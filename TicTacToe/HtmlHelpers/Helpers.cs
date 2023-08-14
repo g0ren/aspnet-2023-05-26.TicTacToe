@@ -1,6 +1,8 @@
 ﻿using System.Web.Mvc;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using TicTacToe.Models;
+using FormMethod = System.Web.Mvc.FormMethod;
 using TagBuilder = System.Web.Mvc.TagBuilder;
 using TagRenderMode = System.Web.Mvc.TagRenderMode;
 
@@ -43,6 +45,17 @@ public static class Helpers
         IHtmlContentBuilder contentBuilder = new HtmlContentBuilder();
         contentBuilder.AppendHtml(tagBuilder.ToString(TagRenderMode.SelfClosing));
 
+        return contentBuilder;
+    }
+
+    public static IHtmlContent CellPreviewForLobby(this IHtmlHelper helper, TicTacToeModel model, int cell)
+    {
+        IHtmlContentBuilder contentBuilder =  new HtmlContentBuilder();
+        contentBuilder.AppendHtml("<td class=\"cell\">");
+        contentBuilder.AppendHtml("<code>");
+        contentBuilder.Append(model.Field[cell]);
+        contentBuilder.AppendHtml("</code>");
+        contentBuilder.AppendHtml("</td>");
         return contentBuilder;
     }
     

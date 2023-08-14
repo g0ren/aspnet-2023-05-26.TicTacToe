@@ -1,7 +1,10 @@
+using TicTacToe.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton(new Game());//DI Container maybe later
 
 builder.Services.AddSession(options =>
 {

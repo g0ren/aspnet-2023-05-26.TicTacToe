@@ -1,0 +1,90 @@
+﻿@using TicTacToe.HtmlHelpers
+@model Index
+
+@{
+    ViewData["Title"] = "Tic Tac Toe";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Tic Tac Toe</h1>
+</div>
+
+@for (int i = 0; i < Lobby.Games.Count; i++)
+{
+    var model = new TicTacToeModel(i);
+    var game = model.Game;
+    <div class="container">
+        <table>
+            <tr>
+                <td>
+                    <table class="field">
+                        <tr>
+                            @Html.CellPreviewForLobby(model, 0)
+                            @Html.CellPreviewForLobby(model, 1)
+                            @Html.CellPreviewForLobby(model, 2)
+                        </tr>
+                        <tr>
+                            @Html.CellPreviewForLobby(model, 3)
+                            @Html.CellPreviewForLobby(model, 4)
+                            @Html.CellPreviewForLobby(model, 5)
+                        </tr>
+                        <tr>
+                            @Html.CellPreviewForLobby(model, 6)
+                            @Html.CellPreviewForLobby(model, 7)
+                            @Html.CellPreviewForLobby(model, 8)
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <ul>
+                        <li>
+                            Игрок <code>X</code>:
+                            @if (game.ConnectedX)
+                            {
+                                <code>
+                                    @game.NameX;
+                                </code>
+                            }
+                            else
+                            {
+                                <i>None</i>
+                            }
+                        </li>
+                        <li>
+                            Игрок <code>0</code>:
+                            @if (game.ConnectedO)
+                            {
+                                <code>
+                                    @game.NameO;
+                                </code>
+                            }
+                            else
+                            {
+                                <i>None</i>
+                            }
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        
+       @using (Html.BeginForm("AddX", "Home", FormMethod.Post))
+       {
+           @Html.Hidden("name", Context.Session.GetString("MyName"))
+           @Html.Hidden("gameNumber", i)
+           @Html.SubmitButton("Войти как X", "", game.ConnectedX)
+       }
+       @using (Html.BeginForm("AddO", "Home", FormMethod.Post))
+       {
+           @Html.Hidden("name", Context.Session.GetString("MyName"))
+           @Html.Hidden("gameNumber", i)
+           @Html.SubmitButton("Войти как O", "", game.ConnectedO)
+       }
+       @using (Html.BeginForm("AddSpectator", "Home", FormMethod.Post))
+       {
+           @Html.Hidden("gameNumber", i)
+           @Html.SubmitButton("Войти как наблюдатель")
+       }
+    </div>
+    <p/>
+}

@@ -4,14 +4,20 @@ namespace TicTacToe.Models;
 
 public class TicTacToeModel
 {
-    public string NameX { get; set; }
-    public string NameO { get; set; }
+    public int GameNumber
+    {
+        get;
+        set;
+    }
+
+    public Game Game => Lobby.Games[GameNumber];
+
     public List<string> Field { get; private set; }
 
     public int WhoseMove { get; set; }
 
     List<int> LineSums =>
-        new List<int>
+        new()
         {
             DesymbolForSums(Field[0]) +
             DesymbolForSums(Field[1]) +
@@ -79,7 +85,7 @@ public class TicTacToeModel
         O
     }
 
-    string Symbol(int code, int cell)
+    string Symbol(int code)
     {
         switch (code)
         {
@@ -135,7 +141,7 @@ public class TicTacToeModel
     {
         for (int i = 0; i < 9; i++)
         {
-            Field[i] = Symbol(encode % 3, i);
+            Field[i] = Symbol(encode % 3);
             encode /= 3;
         }
     }
@@ -150,10 +156,11 @@ public class TicTacToeModel
     }
 
 
-    public TicTacToeModel()
+    public TicTacToeModel(int gameNumber)
     {
-        WhoseMove = GameState.WhoseMove;
+        GameNumber = gameNumber;
+        WhoseMove = Game.WhoseTurnAsInt;
         MakeField();
-        Deserialize(GameState.Encoded);
+        Deserialize(Game.Encoded);
     }
 }

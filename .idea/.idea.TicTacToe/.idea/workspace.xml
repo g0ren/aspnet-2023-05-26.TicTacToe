@@ -6,22 +6,27 @@
     <projectFile profileName="https">TicTacToe/TicTacToe.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f8cf051-735a-45cf-a417-540234a2538f" name="Changes" comment="update 2023.06.13">
-      <change afterPath="$PROJECT_DIR$/TicTacToe/Models/GameState.cs" afterDir="false" />
+    <list default="true" id="2f8cf051-735a-45cf-a417-540234a2538f" name="Changes" comment="update 2023.07.06">
+      <change afterPath="$PROJECT_DIR$/TicTacToe/Models/Lobby.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Lobby.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TicTacToe/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Controllers/HomeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/HtmlHelpers/Helpers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/HtmlHelpers/Helpers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/Models/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Models/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Models/TicTacToeModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Models/TicTacToeModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/Game.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Game.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/GameOver.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/GameOver.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/bin/Debug/net7.0/TicTacToe.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/TicTacToe.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/ref/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/ref/TicTacToe.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/refint/TicTacToe.dll" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/obj/Debug/net7.0/refint/TicTacToe.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TicTacToe/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/TicTacToe/wwwroot/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +50,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ReSpellerSettingsId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -153,7 +159,12 @@
       <workItem from="1687621081106" duration="4494000" />
       <workItem from="1687700269421" duration="593000" />
       <workItem from="1688402028215" duration="599000" />
-      <workItem from="1688406689891" duration="21818000" />
+      <workItem from="1688406689891" duration="24737000" />
+      <workItem from="1689348834966" duration="5123000" />
+      <workItem from="1689958353226" duration="713000" />
+      <workItem from="1690030020663" duration="284000" />
+      <workItem from="1690482221307" duration="6568000" />
+      <workItem from="1690794168922" duration="22121000" />
     </task>
     <task id="LOCAL-00001" summary="update 2023.06.06">
       <created>1686080553032</created>
@@ -169,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686674573630</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update 2023.07.06">
+      <created>1688672428100</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688672428100</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +210,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update 2023.06.06" />
     <MESSAGE value="update 2023.06.13" />
-    <option name="LAST_COMMIT_MESSAGE" value="update 2023.06.13" />
+    <MESSAGE value="update 2023.07.06" />
+    <option name="LAST_COMMIT_MESSAGE" value="update 2023.07.06" />
   </component>
 </project>

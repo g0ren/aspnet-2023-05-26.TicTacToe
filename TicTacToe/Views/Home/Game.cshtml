@@ -4,8 +4,8 @@
     ViewData["Title"] = "Tic Tac Toe";
 }
 
-@if ((Context.Session.GetInt32("MyPlayer") == 1 && !GameState.ConnectedO)
-    || (Context.Session.GetInt32("MyPlayer") == 2 && !GameState.ConnectedX))
+@if ((Context.Session.GetInt32("MyPlayer") == 1 && !Model.Game.ConnectedO)
+    || (Context.Session.GetInt32("MyPlayer") == 2 && !Model.Game.ConnectedX))
 {
     <div class="text-center">
         <h1 class="display-4">
@@ -13,8 +13,8 @@
         </h1>
     </div>
 }
-else if ((Context.Session.GetInt32("MyPlayer") == 2 && !GameState.ConnectedO)
-         || (Context.Session.GetInt32("MyPlayer") == 1 && !GameState.ConnectedX))
+else if ((Context.Session.GetInt32("MyPlayer") == 2 && !Model.Game.ConnectedO)
+         || (Context.Session.GetInt32("MyPlayer") == 1 && !Model.Game.ConnectedX))
 {
     <div class="text-center">
         <h1 class="display-4">
@@ -29,7 +29,7 @@ else
         {
             <h1 class="display-4">
                 <code>
-                    @GameState.NameX
+                    @Model.Game.NameX
                 </code>
                 is the winner!
             </h1>
@@ -38,23 +38,23 @@ else
         {
             <h1 class="display-4">
                 <code>
-                    @GameState.NameO
+                    @Model.Game.NameO
                 </code>
                 is the winner!
             </h1>
         }
-        else if(Context.Session.GetInt32("MyPlayer") == GameState.WhoseMove)
+        else if(Context.Session.GetInt32("MyPlayer") == Model.Game.WhoseTurnAsInt)
         {
             <h1 class="display-4">
                 Ваш ход,
                 <code>
                     @if (Model.WhoseMove == 2)
                     {
-                        @GameState.NameO
+                        @Model.Game.NameO
                     }
                     else
                     {
-                        @GameState.NameX
+                        @Model.Game.NameX
                     }
                 </code>
             </h1>
@@ -66,22 +66,22 @@ else
                 <code>
                     @if (Model.WhoseMove == 2)
                     {
-                        @GameState.NameX
+                        @Model.Game.NameX
                     }
                     else
                     {
-                        @GameState.NameO
+                        @Model.Game.NameO
                     }
                 </code>
                 , сейчас ход
                 <code>
                     @if (Model.WhoseMove == 2)
                     {
-                        @GameState.NameO
+                        @Model.Game.NameO
                     }
                     else
                     {
-                        @GameState.NameX
+                        @Model.Game.NameX
                     }
                 </code>
                 Не забудь перезагрузить страницу!
@@ -99,7 +99,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 0)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -115,7 +117,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 1)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -132,7 +136,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 2)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -150,7 +156,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 3)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -166,7 +174,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 4)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -182,7 +192,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 5)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -200,7 +212,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 6)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -216,7 +230,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 7)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -233,7 +249,9 @@ else
                             @using (Html.BeginForm("GameMove", "Home", FormMethod.Post))
                             {
                                 @Html.Hidden("cell", 8)
-                                @Html.CellButton(Model.Winner != 0 || Context.Session.GetInt32("MyPlayer") != GameState.WhoseMove)
+                                @Html.Hidden("currentGameNumber", Model.GameNumber)
+                                @Html.CellButton(Model.Winner != 0 
+                                                 || Context.Session.GetInt32("MyPlayer") != Model.Game.WhoseTurnAsInt)
                             }
                         }
                         else
@@ -247,17 +265,41 @@ else
     </div>
 }
 
-@using (Html.BeginForm("Game", "Home", FormMethod.Post))
+
+@using (Html.BeginForm("Game", "Home", FormMethod.Post, new {id = "refresh"}))
 {
+    @Html.Hidden("currentGameNumber", Model.GameNumber)
     @Html.SubmitButton("Перезагрузить страницу")
 }
 
+
 @using (Html.BeginForm("NewGame", "Home", FormMethod.Post))
 {
+    @Html.Hidden("currentGameNumber", Model.GameNumber)
     @Html.SubmitButton("Новая игра")
 }
 
-@using (Html.BeginForm("GameOver", "Home", FormMethod.Post))
+
+@using (Html.BeginForm("GameOver", "Home", FormMethod.Post, new {id = "endGame"}))
 {
+    @Html.Hidden("currentGameNumber", Model.GameNumber)
     @Html.SubmitButton("Завершить игру")
 }
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+window.setTimeout(() =>{
+    if ((@Context.Session.GetInt32("MyPlayer") === 1
+            && "@Model.Game.ConnectedX" !== "True")
+        || (@Context.Session.GetInt32("MyPlayer") === 2
+            && "@Model.Game.ConnectedO" !== "True")
+        || @Context.Session.GetInt32("MyPlayer") == null)
+    {
+        document.forms["endGame"].submit()
+    }
+    else 
+    {    
+        document.forms["refresh"].submit()
+    }
+}, 1500)  
+</script> 
